@@ -1,0 +1,29 @@
+{
+  "name": "chillJS",
+  "version": "v0.0.1-alpha",
+  "description": "JavaScript 2D library",
+  "main": "chill.js",
+  "keywords": [
+    "chill",
+    "chillJS",
+    "chill.js",
+    "2d"
+  ],
+  "author": "Gábor Bokodi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bokodi/chillJS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bokodi/chillJS/issues"
+  },
+  "homepage": "http://bokodi.github.io/chillJS/",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-header": "^1.7.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.3"
+  }
+}

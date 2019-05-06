@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Isometric</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="css/layout.css" />
+</head>
+<body>
+
+	<canvas id="canvas"></canvas>
+	<div id="settings">
+		<p>grass: <input value="0" name="tile" type="radio" checked /></p>
+		<p>wall: <input value="1" name="tile" type="radio" /></p>
+		<p>gold: <input value="2" name="tile" type="radio" /></p>
+	</div>
+
+	<script src="js/script.js"></script>
+	<script>
+		new Game(
+			_id('canvas'), // domelement
+			10, 14, // x * y grid
+			50, 50 // cell width & height
+		);
+	</script>
+	
+</body>
+</html>

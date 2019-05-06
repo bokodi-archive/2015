@@ -1,0 +1,341 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.42857;
+}
+
+.sitebuilderbox {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #F5F5F5;
+    border: 1px solid #E3E3E3;
+    border-radius: 4px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
+}
+
+#settings_row_1 {
+    margin: 30px 0 10px 0;
+}
+
+/*		---- Sticker css ----		/
+///////////////////////////////////*/
+
+#stickerBox {
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#sticker {
+    position: relative;
+    background-image: url('../img/sticker/transparent.png');
+    background-color: #fff;
+    border: 1px solid #efefef;
+    overflow: hidden;
+    max-width: 100%;
+    padding-bottom: 20px;
+}
+
+#sticker_wrapper {
+    position: relative;
+    display: inline-block;
+    font-size: 0;
+    border: 5px solid rgba(0, 0, 0, 0.3);
+}
+
+#sticker_wrapper canvas {
+    background-color: #ffffff;
+}
+
+#horizontal, #vertical {
+    position: absolute;
+    background: rgba(255, 0, 0, 0.75);
+    z-index: 99;
+}
+
+#horizontal {
+    width: 100%;
+    height: 1px;
+    /*top: 50%;*/
+    left: 0;
+    cursor: n-resize;
+}
+
+#vertical {
+    width: 1px;
+    height: 100%;
+    top: 0;
+    /*left: 50%;*/
+    cursor: e-resize;
+}
+
+#sticker_upload_form {
+    display: inline-block;
+}
+
+#addImage {
+    display: inline;
+}
+
+.color_picker {
+    display: inline;
+    position: relative;
+}
+
+.color_list {
+    list-style-type: none;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    background: #F5F5DC;
+    width: 200px;
+    min-height: 100px;
+    max-height: 300px;
+    z-index: 999;
+    border: 1px solid #666;
+    border-radius: 2px;
+    overflow-y: auto;
+    display: none;
+    margin: 0;
+    padding: 8px;
+}
+
+.color_list li.color_set h3 {
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+.color_list li.color_set ul {
+    margin: 0;
+    padding: 0;
+}
+
+.color_list li.color_set ul li {
+    display: inline-block;
+    margin: 5px;
+    width: 20px;
+    height: 15px;
+    cursor: pointer;
+}
+
+#edit_text {
+    width: 100%;
+    min-height: 80px;
+}
+
+#sticker_footer {
+    margin-top: 20px;
+    border: 1px solid #909090;
+    padding: 10px;
+}
+
+#PDF_preview {
+    display: inline;
+}
+
+#add_font_wrapper {
+    width: 30px;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#add_font {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#font_upload {
+    padding: 15px;
+    position: absolute;
+    display: none;
+    top: 30px;
+    left: 0;
+    border-radius: 5px;
+    background: #abcdef;
+    z-index: 100;
+}
+
+#font_upload h3 {
+    margin: 0 0 30px 0;
+    padding: 0;
+    color: #6495ED;
+}
+
+#font_upload ul {
+    width: 300px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#font_upload ul li {
+    margin: 10px 0;
+}
+
+#font_upload ul li span {
+    width: 100px;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1;
+    color: #F0F8FF;
+}
+
+#font_upload ul li input {
+    width: 200px;
+    display: inline-block;
+}
+
+#font_upload ul li input#add_font_name {
+    padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+    font-weight: 400;
+    border: 1px solid transparent;
+}
+
+#font_upload ul li input#add_font_name:hover {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+
+#add_font_upload {
+    margin-top: 15px;
+    padding: 5px 10px;
+    float: right;
+}
+
+/*		---- Sticker css end ----		/
+///////////////////////////////////////*/
+
+/*			---- ruler css ----			/
+///////////////////////////////////////*/
+
+.ruler {
+    background: rgba(255, 255, 255, 1);
+    color: #444;
+    font-family: source code pro, "Arial Narrow", "Helvetica Neue", Helvetica, Arial, Veranda, sans-serif;
+    font-size: 12px;
+    line-height: 14px;
+    overflow: hidden;
+}
+
+.ruler > div {
+    background: #444;
+}
+
+.hRule {
+    position: absolute;
+    width: 100%;
+    height: 18px;
+    left: 0px;
+    top: 0px;
+
+    border-bottom: 1px solid;
+    z-index: 9;
+}
+
+.vRule {
+    position: absolute;
+
+    min-height: 100%;
+    width: 18px;
+    left: 0px;
+    top: 0px;
+
+    border-right: 1px solid;
+    z-index: 9;
+
+}
+
+.corner {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 18px;
+    height: 18px;
+    border-bottom: 1px solid; /* 1px solid */
+    z-index: 10;
+}
+
+.hRule .tickLabel {
+    position: absolute;
+    top: 0px;
+    width: 1px;
+    height: 100%;
+    text-indent: 1px;
+}
+
+.hRule .tickMajor {
+    position: absolute;
+    bottom: 0px;
+    width: 1px;
+    height: 6px;
+}
+
+.hRule .tickMinor {
+    position: absolute;
+    bottom: 0px;
+    width: 1px;
+    height: 4px;
+}
+
+.vRule .tickLabel {
+    position: absolute;
+    right: 0px;
+    height: 1px;
+    width: 100%;
+    text-indent: 1px;
+}
+
+.vRule .tickLabel span {
+    display: block;
+    position: absolute;
+
+    top: 1px;
+    right: 0px;
+    margin-right: 18px;
+
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+
+    -webkit-transform-origin: top right;
+    -moz-transform-origin: top right;
+    -ms-transform-origin: top right;
+    -o-transform-origin: top right;
+    transform-origin: top right;
+}
+
+.vRule .tickMajor {
+    position: absolute;
+    right: 0px;
+    height: 1px;
+    width: 6px;
+}
+
+.vRule .tickMinor {
+    position: absolute;
+    right: 0px;
+    height: 1px;
+    width: 4px;
+}
+
+/*		---- ruler css end ----		/
+///////////////////////////////////*/

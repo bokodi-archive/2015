@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sticker</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/colorpicker.css">
+</head>
+<body>
+<div class="container">
+    <div class="row sitebuilderbox">
+        <div class="col-md-12">
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <label class="control-label">Size:</label>
+                    <input type="text" class="form-control input-sm" id="size_width" value="100"> x
+                    <input type="text" class="form-control input-sm" id="size_height" value="60"> cm
+                    <input id="max_size_width" name="max_size_width" type="hidden" value="120">
+                    <input id="max_size_height" name="max_size_height" type="hidden" value="1000">
+                    <button type="button" id="resize" class="btn btn-primary  btn-sm" title="Resize">
+                        <i class="fa fa-refresh fa-lg"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <hr>
+
+        <div class="col-md-12">
+            <button id="addText" type="button" class="btn btn-xs btn-default" title="Add Text">
+                <i class="fa fa-font fa-lg"></i> Text
+            </button>
+            <form id="sticker_upload_form" method="post" enctype="multipart/form-data">
+                <input id="addImage" name="addImage" type="file" class="btn btn-xs btn-default" title="Add Image"/>
+            </form>
+            <button id="clone" type="button" class="btn btn-xs btn-default" title="Clone">
+                <i class="fa fa-copy square fa-lg"></i>
+            </button>
+            <span style="color:#CCC; padding: 0 8px">  |||  </span>
+            <button type="button" class="btn btn-xs btn-default" disabled="disabled" title="Width" style="width:60px;">
+                <i class="fa fa-text-width fa-lg"></i>&nbsp; <span id="text_width">N/A</span>
+            </button>
+            <button type="button" class="btn btn-xs btn-default" disabled="disabled" title="Height" style="width:60px;">
+                <i class="fa fa-text-height fa-lg"></i>&nbsp; <span id="text_height">N/A</span>
+            </button>
+            <button type="button" class="btn btn-xs btn-default" disabled="disabled" title="x Axis" style="width:60px;">
+                <img src="img/sticker/sc_l9.png"> <span id="text_x">N/A</span>
+            </button>
+            <button type="button" class="btn btn-xs btn-default" disabled="disabled" title="Y Axis" style="width:60px;">
+                <img src="img/sticker/sc_l10.png"> <span id="text_y">N/A</span>
+            </button>
+            <span style="color:#CCC; padding: 0 8px">  |||  </span>
+            <button id="butt3" type="button" class="btn btn-xs btn-default verticalbutt">
+                <img src="img/sticker/sc_l2.png">
+            </button>
+            <button id="butt2" type="button" class="btn btn-xs btn-default verticalbutt">
+                <img src="img/sticker/sc_l3.png">
+            </button>
+            <button id="butt1" type="button" class="btn btn-xs btn-default verticalbutt">
+                <img src="img/sticker/sc_l1.png">
+            </button>
+            <button id="butt6" type="button" class="btn btn-xs btn-default horizontalbutt">
+                <img src="img/sticker/sc_l5.png">
+            </button>
+            <button id="butt5" type="button" class="btn btn-xs btn-default horizontalbutt">
+                <img src="img/sticker/sc_l6.png">
+            </button>
+            <button id="butt4" type="button" class="btn btn-xs btn-default horizontalbutt">
+                <img src="img/sticker/sc_l4.png">
+            </button>
+
+            <span style="color:#CCC; padding: 0 8px">  |||  </span>
+            <div id="bg_color_picker" class="color_picker">
+                <button id="bg_color" type="button" class="btn btn-xs btn-default" title="Background Color">
+                    <i class="fa fa-paint-brush fa-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="settings_row_2" class="col-md-12">
+            <select id="text_type" class="textEdit" style="width:200px; height:21px">
+                <option value="Helvetica">Helvetica</option>
+                <option value="Times">Times</option>
+                <option value="Courier">Courier</option>
+                <option value="FreeSans">Free Sans</option>
+            </select>
+            <input id="text_size" class="textEdit" type="text" value="16" style="width:40px; height:21px">
+            <span style="color:#CCC; padding: 0 8px">  |||  </span>
+            <div id="font_color_picker" class="color_picker">
+                <button id="text_color" type="button" class="btn btn-xs btn-default textEdit"
+                        title="Text Color">
+                    <i class="fa fa-tint fa-lg"></i>
+                </button>
+            </div>
+            <span style="color:#CCC; padding: 0 8px">  |||  </span>
+            <button id="font_bold" type="button" class="btn btn-xs btn-default fontEdit" title="Bold">
+                <i class="fa fa-bold fa-lg"></i>
+            </button>
+            <button id="font_italic" type="button" class="btn btn-xs btn-default fontEdit" title="Italic">
+                <i class="fa fa-italic fa-lg"></i>
+            </button>
+            <button id="font_underline" type="button" class="btn btn-xs btn-default fontEdit" title="Underline">
+                <i class="fa fa-underline fa-lg"></i>
+            </button>
+            <span style="color:#CCC; padding: 0 8px">  |||  </span>
+            <button id="text_align_left" type="button" class="text_align btn btn-xs btn-default" title="Align Left">
+                <i class="fa fa-align-left fa-lg"></i>
+            </button>
+            <button id="text_align_center" type="button" class="text_align btn btn-xs btn-default"
+                    title="Align Justify">
+                <i class="fa fa-align-justify fa-lg"></i>
+            </button>
+            <button id="text_align_right" type="button" class="text_align btn btn-xs btn-default" title="Align Right">
+                <i class="fa fa-align-right fa-lg"></i>
+            </button>
+            <span style="color:#CCC; padding: 0 8px">  |||  </span>
+            <button id="forward" type="button" class="btn btn-xs btn-default" title="Move forward">
+                <img src="img/sticker/sc_l8.png">
+            </button>
+            <button id="backward" type="button" class="btn btn-xs btn-default" title="Move Backward">
+                <img src="img/sticker/sc_l7.png">
+            </button>
+            <span style="color:#CCC; padding: 0 8px">  |||  </span>
+            <button id="rotate_left" type="button" class="btn btn-xs btn-default" title="Rotate Left">
+                <i class="fa fa-rotate-left fa-lg"></i>
+            </button>
+            <input id="rotate_val" type="text" placeholder=" " style="width:40px; height:21px;">
+            <button id="rotate_right" type="button" class="btn btn-xs btn-default" title="Rotate Right">
+                <i class="fa fa-rotate-right fa-lg"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <div id="text_editor_modal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Text editor</h4>
+                </div>
+                <div class="modal-body">
+                    <textarea id="edit_text" name="edit_text"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cancel
+                    </button>
+                    <!--<button id="text_edit_consuelasaidno" type="button" class="btn btn-primary">Abbrechen</button>-->
+                    <button id="text_edit_ja" type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row sitebuilderbox" id="stickerBox">
+        <div id="sticker">
+            <div id="horizontal"></div>
+            <div id="vertical"></div>
+            <div id="sticker_wrapper"></div>
+        </div>
+
+        <div id="sticker_footer" class="col-md-12">
+            <button id="zoomOut" type="button" class="btn btn-xs btn-default" title="Zoom Out"><i
+                    class="fa fa-search-minus fa-lg"></i></button>
+            <button id="unZoom" type="button" class="btn btn-xs btn-default" title="Clear Zoon"><i
+                    class="fa fa-search fa-lg"></i></button>
+            <button id="zoomIn" type="button" class="btn btn-xs btn-default" title="Zoom In"><i
+                    class="fa fa-search-plus fa-lg"></i></button>
+
+            <span style="color:#CCC; padding: 0 8px">  |||  </span>
+
+            Dimension: <span id="selectedDimW">0</span> x <span id="selectedDimH">0</span> cm
+        </div>
+    </div>
+
+    <script src="js/Sticker.js"></script>
+    <script>
+        var sticker = new Sticker(document.getElementById('sticker_wrapper'), 500, 300, true);
+
+        window.addEventListener('load', function () {
+            'use strict';
+
+            var
+                $ = jQuery,
+
+                hm = false,
+                vm = false,
+
+                PX_PER_CM = 5,
+
+                acceptedFontExtensions = ['ttf'],
+
+                rulerScript
+            ;
+
+            function pint(x) {
+                return window.parseInt(x, 10);
+            }
+
+            function getHelperOffset(dir) {
+                return (
+                    $('#sticker_wrapper').position()[dir.toLowerCase()] +
+                    pint($('#sticker_wrapper').css('border' + dir + 'Width')) +
+                    pint($('#sticker_wrapper').css('margin' + dir))
+                );
+            }
+
+            rulerScript = document.createElement('script');
+            rulerScript.onload = function () {
+                ruleThemAll(20);
+            };
+            rulerScript.src = 'js/ruler.js';
+            document.body.appendChild(rulerScript);
+
+            $('#resize').click(function (e) {
+                e.preventDefault();
+
+                var w = window.parseInt($('#size_width').val(), 10) | 0,
+                    h = window.parseInt($('#size_height').val(), 10) | 0,
+                    max1 = window.parseInt($('#max_size_width').val(), 10),
+                    max2 = window.parseInt($('#max_size_height').val(), 10),
+                    val1 = Math.min(w, w > h ? Math.max(max1, max2) : Math.min(max1, max2)),
+                    val2 = Math.min(h, w <= h ? Math.max(max1, max2) : Math.min(max1, max2));
+
+                if ((w > max1 || h > max2) && (w > max2 || h > max1))
+                    window.alert('For a larger size, please contact us.');
+
+                $('#size_width').val(val1);
+                $('#size_height').val(val2);
+                sticker.resize(val1 * PX_PER_CM, val2 * PX_PER_CM);
+
+                ruleThemAll(20);
+            });
+
+            sticker.onupdate = function () {
+                if (sticker.selected !== null) {
+                    if ('text' in sticker.selected) {
+                        $('#text_type').val(sticker.selected.font);
+                        $('#text_size').val(window.parseInt(sticker.selected.size, 10));
+                        $('#text_color').val(sticker.selected.color);
+                    }
+
+                    var xx = sticker.flipped ? sticker.width - sticker.selected.x - sticker.selected.width : sticker.selected.x;
+                    var yy = sticker.selected.y;
+
+                    $('#text_x').html(Math.round(xx / PX_PER_CM));
+                    $('#text_y').html(Math.round(yy / PX_PER_CM));
+
+                    $('#text_width').html(Math.round(sticker.selected.width / PX_PER_CM));
+                    $('#text_height').html(Math.round(sticker.selected.height / PX_PER_CM));
+
+                    $('#selectedDimW').html(Math.floor(sticker.getDimension(PX_PER_CM).width));
+                    $('#selectedDimH').html(Math.floor(sticker.getDimension(PX_PER_CM).height));
+                }
+            };
+
+            sticker.ondeselect = function () {
+                $('#text_width, #text_height').html('N/A');
+            };
+
+            $('#text_edit_ja').click(function () {
+                if (sticker.selected !== null && 'text' in sticker.selected) {
+                    sticker.selected.setText($('#edit_text').val());
+                    $('#text_editor_modal').modal('hide');
+                    sticker.update();
+                }
+            });
+
+            $('#text_edit_consuelasaidno').click(function () {
+                if (sticker.selected !== null && 'text' in sticker.selected) {
+                    $('#text_editor_modal').modal('hide');
+                    if (window.confirm('Text Löschen?')) sticker.remove(sticker.selected);
+                }
+            });
+
+            sticker.ontextEdit = function () {
+                if (sticker.selected !== null && 'text' in sticker.selected) {
+                    $('#text_editor_modal #edit_text').val(sticker.selected.text);
+                    $('#text_editor_modal').modal('show');
+                }
+            };
+
+            $('#horizontal').mousedown(function (e) {
+                hm = true;
+                $('#sticker_wrapper').css('cursor', 'n-resize');
+                e.preventDefault();
+            });
+
+            $('#vertical').mousedown(function (e) {
+                vm = true;
+                $('#sticker_wrapper').css('cursor', 'e-resize');
+                e.preventDefault();
+            });
+
+            $('#sticker_wrapper').mousemove(function (e) {
+                e.preventDefault();
+
+                var y = e.originalEvent.layerY + getHelperOffset('Top'),
+                    x = e.originalEvent.layerX + getHelperOffset('Left');
+
+                if (hm && y >= 0) $('#horizontal').css('top', y + 'px');
+                if (vm && x >= 0) $('#vertical').css('left', x + 'px');
+            });
+
+            $('#sticker').mouseleave(focusOut);
+
+            $('body').mouseup(focusOut);
+
+            function focusOut() {
+                sticker.dragged = null;
+                hm = false;
+                vm = false;
+                $('#sticker_wrapper').css('cursor', 'auto');
+            }
+
+            $('#addText').click(function () {
+                sticker.add('text', 'Sample Text');
+            });
+
+            $('#addImage').change(function (changeEvent) {
+                sticker.save();
+
+                var reader = new FileReader();
+
+                reader.onload = function(loadEvent) {
+                    var img = new Image();
+
+                    img.onload = function() {
+                        sticker.add('image', this);
+                    };
+
+                    img.src = loadEvent.target.result;
+                };
+
+                reader.readAsDataURL(changeEvent.target.files[0]);
+            });
+
+            $('#clone').click(function () {
+                if (sticker.selected !== null) sticker.push(sticker.selected.clone());
+            });
+
+            $('.verticalbutt').click(function () {
+                if (sticker.selected !== null) {
+                    var vPos = $('#vertical').position().left,
+                        lowestX = sticker.selected.lowestOrLargestPos('x', false, sticker.zoomRate).x,
+                        largestX = sticker.selected.lowestOrLargestPos('x', true, sticker.zoomRate).x,
+                        x;
+
+                    switch ($(this).attr('id')) {
+                        case 'butt1':
+                            x = sticker.flipped ? largestX : lowestX;
+                            break;
+                        case 'butt2':
+                            x = (lowestX + largestX) / 2;
+                            break;
+                        case 'butt3':
+                            x = sticker.flipped ? lowestX : largestX;
+                            break;
+                    }
+
+                    sticker.selected.x += (vPos - x - getHelperOffset('Left')) / sticker.zoomRate;
+                    sticker.update();
+                }
+            });
+
+            $('.horizontalbutt').click(function () {
+                if (sticker.selected !== null) {
+                    var hPos = $('#horizontal').position().top,
+                        lowestY = sticker.selected.lowestOrLargestPos('y', false, sticker.zoomRate).y,
+                        largestY = sticker.selected.lowestOrLargestPos('y', true, sticker.zoomRate).y,
+                        y;
+
+                    switch ($(this).attr('id')) {
+                        case 'butt4':
+                            y = lowestY;
+                            break;
+                        case 'butt5':
+                            y = (lowestY + largestY) / 2;
+                            break;
+                        case 'butt6':
+                            y = largestY;
+                            break;
+                    }
+
+                    sticker.selected.y += (hPos - y - getHelperOffset('Top')) / sticker.zoomRate;
+                    sticker.update();
+                }
+            });
+
+            $('#bg_color').ColorPicker({
+                color: {r: 255, g: 255, b: 255},
+                onChange: function (hsb, hex, rgb) {
+                    sticker.setBg('rgb(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ')');
+                }
+            });
+
+            $('.textEdit').change(function () {
+                var type = $(this).attr('id').split('_')[1];
+                type = type[0].toUpperCase() + type.substr(1);
+                sticker['setFont' + type]($(this).val());
+            });
+
+            $('.fontEdit').click(function () {
+                var type = $(this).attr('id').split('_')[1];
+                type = type[0].toUpperCase() + type.substr(1);
+                sticker['setFont' + type]();
+            });
+
+            $('.text_align').click(function () {
+                var align = $(this).attr('id').split('_')[2];
+                sticker.setTextAlign(align);
+            });
+
+            $('#text_color').ColorPicker({
+                color: {r: 0, g: 0, b: 0},
+                onChange: function (hsb, hex, rgb) {
+                    sticker.setFontColor('rgb(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ')');
+                }
+            });
+
+            $('#forward').click(function () {
+                sticker.forwardTarget();
+            });
+
+            $('#backward').click(function () {
+                sticker.backwardTarget();
+            });
+
+            $('#zoomOut').click(function () {
+                // sticker.zoomOut();
+                sticker.zoom(-0.5);
+                $('#vertical').css('width', Math.max(1, Math.round(sticker.zoomRate * 2)) + 'px');
+                $('#horizontal').css('height', Math.max(1, Math.round(sticker.zoomRate * 2)) + 'px');
+                sticker.refresh();
+                ruleThemAll(20);
+            });
+
+            $('#unZoom').click(function () {
+                sticker.zoom();
+                $('#vertical').css('width', '2px');
+                $('#horizontal').css('height', '2px');
+                sticker.refresh();
+                ruleThemAll(20);
+            });
+
+            $('#zoomIn').click(function () {
+                // sticker.zoomIn();
+                sticker.zoom(1);
+                $('#vertical').css('width', Math.max(1, Math.round(sticker.zoomRate * 2)) + 'px');
+                $('#horizontal').css('height', Math.max(1, Math.round(sticker.zoomRate * 2)) + 'px');
+                sticker.refresh();
+                ruleThemAll(20);
+            });
+
+            $('#rotate_left').click(function () {
+                sticker.rotate($('#rotate_val').val(), true);
+            });
+
+            $('#rotate_right').click(function () {
+                sticker.rotate($('#rotate_val').val(), false);
+            });
+
+            $('#PDF_generator').click(function () {
+                sticker.deselect();
+                sticker.save();
+                $('#sticker_active').val(sticker.uuid);
+                $('#sticker_list').val(window.localStorage.getItem('stickerList'));
+            });
+
+            function ruleThemAll(size) {
+                $('.ruler.corner, .ruler.vRule, .ruler.hRule').remove();
+
+                $('#stickerBox').css('min-width', ($('#size_width').val() * PX_PER_CM + 70) + 'px');
+                $('#sticker').css('width', $('#stickerBox').innerWidth() + 'px');
+
+                var half = size / 2 | 0;
+                var border = window.parseInt($('#sticker_wrapper').css('border-top-width'), 10) | 0;
+                var pos = half - border;
+
+                $('#sticker').ruler({
+                    vRuleSize: size,
+                    hRuleSize: size,
+                    showCrosshair: false,
+                    showMousePos: false,
+                    ratio: 1 / PX_PER_CM
+                });
+
+                $('#sticker_wrapper').css('margin', pos + 'px' + ' 0 0 ' + pos + 'px');
+
+                $('.vRule').css('margin-top', half + 'px');
+                $('.hRule').css('margin-left', half + 'px');
+
+                $('#horizontal').css('top', sticker.height / 2 + getHelperOffset('Top') + 'px');
+                $('#vertical').css('left', sticker.width / 2 + getHelperOffset('Left') + 'px');
+
+                var i, n = (sticker.zoomRate - 1) * 5;
+
+                i = 0;
+                $('.ruler.hRule div').each(function () {
+                    $(this).css('left', window.parseInt($(this).css('left')) + (n * i++) + 'px');
+                });
+
+                i = 0;
+                $('.ruler.vRule div').each(function () {
+                    $(this).css('top', window.parseInt($(this).css('top')) + (n * i++) + 'px');
+                });
+            }
+        });
+    </script>
+
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/colorpicker.js"></script>
+</body>
+</html>

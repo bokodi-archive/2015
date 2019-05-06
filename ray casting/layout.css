@@ -1,0 +1,56 @@
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+}
+
+body {
+	margin: 8px;
+	background-color: #3c3c3c;
+	font-family: "Helvetica Neue", Arial, adelle-sans, sans-serif;
+	color: #fefefe;
+	line-height: 1;
+}
+
+ol, ul {
+	list-style-type: none;
+}
+a {
+	text-decoration: none;
+}
+button {
+	padding: 1px 6px;
+	background-color: #e4e4e4;
+	cursor: pointer;
+}
+button:hover {
+	background-color: #ebebeb;
+}
+input {
+	padding: 2px;
+}
+input[type=number] {
+	width: 50px;
+}
+input, button, select {
+	border: 1px outset #959595;
+	border-radius: 2px;
+}
+canvas {
+background: #ffffff;
+}
+
+.hidden {
+	display: none;
+}
+#settings {
+	display: inline-block;
+	margin-left: 40px;
+	background: #abcdef;
+	padding: 10px 20px;
+	vertical-align: top;
+}
+#settings li {
+	margin: 8px 0;
+}

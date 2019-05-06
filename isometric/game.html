@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Isometric</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="css/layout.css" />
+</head>
+<body>
+
+	<canvas id="canvas"></canvas>
+	<div id="info">
+		<div>pickups left: <div id="tile_left"></div></div>
+		<div id="time"></div>
+	</div>
+
+	<script src="js/gscript.js"></script>
+	<script>
+		new Game(
+			_id('canvas'),
+			9, 14, // columns, rows
+			50, 50 // cell width & height
+		);
+	</script>
+	
+</body>
+</html>
